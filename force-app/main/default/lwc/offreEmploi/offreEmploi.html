@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Offres Emplois" icon-name="custom:custom63">
+        <template if:true={jobOffers}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Job Name">Offre Emploi Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Status">Statut</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={jobOffers} for:item="offer">
+                        <tr key={offer.jobId}>
+                            <td>
+                                <a data-id={offer.jobId} onclick={handleJobOfferClick}>{offer.jobName}</a>
+                            </td>
+                            <td class="slds-cell-edit">
+                                <span class="slds-truncate" title={offer.statut}>{offer.statut}</span>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+    </lightning-card>
+</template>
